@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='Inquiry.png') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <header>
+            <h1>Nutrition Enquiry</h1>
+            <a class="icon">
+                <img src="{{ url_for('static', filename='CA_icon.png') }}" alt="">
+            </a>
+        </header>
+        <nav>
+            {% if not g.admin_id %}
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('enquiry') }}">Enquiry</a>
+            <a href="{{ url_for('foods') }}">Food</a>
+            <a href="{{ url_for('draft') }}">Draft</a>
+            <a href="{{ url_for('record_design',food_name='None') }}">Plan</a>
+            {% endif %}
+            {% if g.admin_id %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('foods') }}">Food</a>
+            <a href=" {{ url_for('users_profile') }} "">Users profile</a>
+            {% endif %}
+            <div>
+            {% if g.user_type %}
+            {% if g.user_id %}
+            <a class="status">Normal account</a>
+            <a class="status">ID: {{ account_id }}</a>
+            <a class="profile" href=" {{ url_for('user_profile') }} "">User profile</a>
+            <a class="logout" href=" {{ url_for('logout') }} " >Logout</a>
+            {% endif %}
+            {% if g.admin_id %}
+            <a class="status">Advanced account</=>
+            <a class="status">ID: {{ account_id }}</a>
+            <a class="logout" href=" {{ url_for('logout') }} " >Logout</a>
+            {% endif %}
+            {% else %}
+            <a class="start" href=" {{ url_for('register') }} " >Register</a>
+            <a class="start" href=" {{ url_for('login') }} " >Login</a>
+            </div>
+            {% endif %}
+        </nav>
+        <main>
+        {% block main_content %}
+        {% endblock %} 
+        </main>
+    </body>
+    <footer>
+        <p> &copy; Web dev2 CA by Junjie</p>
+    </footer>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        <h1>Plan</h1>
+        <section class="block_detail">
+            {% if record_design %}
+                <article>
+                    <form method="POST" action="" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.food_id.label }}
+                        {{ form.food_id() }}
+                        {{ form.meal_time.label }}
+                        {{ form.meal_time() }}
+                        {{ form.enquiry() }}
+                        {{ form.delete() }}
+                        {{ form.update() }}
+                    </form>
+                </article>
+                <br />
+                <article>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Food</th>
+                            <th>Meal time</th>
+                            <th>Insert date</th>
+                        </tr> 
+                        {% for dict in record_design %}
+                        <tr>
+                            <td>{{dict["food_id"]}}</td>
+                            <td>{{dict["food_name"]}}</td>
+                                <td>{{dict["meal_time"]}}</td>
+                                <td>{{dict["insert_date"]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                </article>
+            {% else %}
+                <article>
+                    <p>Your Meal plan is empty!</p>
+                    <a href="{{ url_for('draft') }}">Go to Draft to design!</a>
+                </article>
+            {% endif %}
+        </section>
+    </section>
+
+{% endblock %}

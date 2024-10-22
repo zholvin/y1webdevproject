@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        <h1>Status of {{status_dict["food_name"]}}</h1>
+        <section class="block_detail">
+            <article>
+                <form method="Post" action="" novalidate>
+                    {{ form.hidden_tag() }}
+                    <table>
+                        <tr>
+                            <th>User id</th>
+                            <th>Food name</th>
+                            <th>Food type</th>
+                            <th>Insert date</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr>
+                            <td>{{ status_dict["user_id"] }}</td>
+                            <td>{{ status_dict["food_name"] }}</td>
+                            <td>{{ status_dict["food_type"] }}</td>
+                            <td>{{ status_dict["insert_date"] }}</td>
+                            <td>{{ status_dict["guest_description"] }}</td>
+                            <td>{{ form.status() }}</td>
+                            <td>{{ form.update() }}</td>
+                            <td>
+                                <a href="{{ url_for('food_not_list_delete', order_id=status_dict['order_id'])}}">Delete</a>
+                            </td>
+                        </tr>
+                        </table>
+                </form>
+            </article>
+            <article>
+                <h2>Add {{status_dict["food_name"]}}</h2>
+                <section>
+                    <form action="" method="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.food_name.label }}
+                        {{ form.food_name() }}
+                        {% for error in form.food_name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        {{ form.food_type.label }}
+                        {{ form.food_type() }}
+                        {{ form.submit() }}
+                    </form>
+                </section>
+            </article>
+        </section>
+    </section>
+
+{% endblock %}

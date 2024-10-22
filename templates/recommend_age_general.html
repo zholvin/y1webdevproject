@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        {% if age_recommend_male and age_recommend_female%}
+        <h1>General nutrition recommendation sorted by Age</h1>
+        <section class="block_details=">
+            <article>
+                <form action="" method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ form.gender.label }}
+                    {{ form.gender() }}
+                    {{ form.age.label }}
+                    {{ form.age() }}
+                    {{ form.submit() }}
+                    {{ form.save() }}
+                        {% for error in form.age.errors %}
+                            {{ error }}
+                        {% endfor %}
+                </form>
+                <h2>Male's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Energy (MJ)</th>
+                        <th>Energy (kcal)</th>
+                        <th>Protein</th>
+                        <th>Fat</th>
+                        <th>CarbohyDrate</th>
+                        <th>Free Sugars</th>
+                        <th>Salt</th>
+                        <th>Fibre</th>
+                    </tr>
+                    {% for dict in age_recommend_male %}
+                    <tr>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["energy_MJ"] }}</td>
+                        <td>{{ dict["energy_kcal"] }}</td>
+                        <td>{{ dict["protein"] }}</td>
+                        <td>{{ dict["fat"] }}</td>
+                        <td>{{ dict["carbohydrate"] }}</td>
+                        <td>{{ dict["free_sugars"] }}</td>
+                        <td>{{ dict["salt"] }}</td>
+                        <td>{{ dict["fibre"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+            <article>
+                <h2>Female's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>energy_MJ</th>
+                        <th>energy_kcal</th>
+                        <th>protein</th>
+                        <th>fat</th>
+                        <th>carbohydrate</th>
+                        <th>free_sugars</th>
+                        <th>salt</th>
+                        <th>fibre</th>
+                    </tr>
+                    {% for dict in age_recommend_female %}
+                    <tr>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["energy_MJ"] }}</td>
+                        <td>{{ dict["energy_kcal"] }}</td>
+                        <td>{{ dict["protein"] }}</td>
+                        <td>{{ dict["fat"] }}</td>
+                        <td>{{ dict["carbohydrate"] }}</td>
+                        <td>{{ dict["free_sugars"] }}</td>
+                        <td>{{ dict["salt"] }}</td>
+                        <td>{{ dict["fibre"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+            
+            
+                
+        {% elif age_recommend_male %}
+        <h1>General nutrition recommendation sorted by Age</h1>
+        <section class="block_details=">
+            <form action="" method="POST" novalidate>
+                {{ form.hidden_tag() }}
+                {{ form.gender.label }}
+                {{ form.gender() }}
+                {{ form.age.label }}
+                {{ form.age() }}
+                {{ form.submit() }}
+                {{ form.save() }}
+                    {% for error in form.age.errors %}
+                        {{ error }}
+                    {% endfor %}
+            </form>
+            <br/>
+            <h2>Male's</h2>
+            <table>
+                <tr>
+                    <th>Age</th>
+                    <th>energy_MJ</th>
+                    <th>energy_kcal</th>
+                    <th>protein</th>
+                    <th>fat</th>
+                    <th>carbohydrate</th>
+                    <th>free_sugars</th>
+                    <th>salt</th>
+                    <th>fibre</th>
+                </tr>
+                {% for dict in age_recommend_male %}
+                <tr>
+                    <td>{{ dict["age"] }}</td>
+                    <td>{{ dict["energy_MJ"] }}</td>
+                    <td>{{ dict["energy_kcal"] }}</td>
+                    <td>{{ dict["protein"] }}</td>
+                    <td>{{ dict["fat"] }}</td>
+                    <td>{{ dict["carbohydrate"] }}</td>
+                    <td>{{ dict["free_sugars"] }}</td>
+                    <td>{{ dict["salt"] }}</td>
+                    <td>{{ dict["fibre"] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+
+
+        {% elif age_recommend_female %}
+        <h1>General nutrition recommendation sorted by Age</h1>
+            <section class="block_details=">
+                <form action="" method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ form.gender.label }}
+                    {{ form.gender() }}
+                    {{ form.age.label }}
+                    {{ form.age() }}
+                    {{ form.submit() }}
+                    {{ form.save() }}
+                    {% for error in form.age.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </form>
+                <br />
+                <h2>Female's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>energy_MJ</th>
+                        <th>energy_kcal</th>
+                        <th>protein</th>
+                        <th>fat</th>
+                        <th>carbohydrate</th>
+                        <th>free_sugars</th>
+                        <th>salt</th>
+                        <th>fibre</th>
+                    </tr>
+                    {% for dict in age_recommend_female %}
+                    <tr>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["energy_MJ"] }}</td>
+                        <td>{{ dict["energy_kcal"] }}</td>
+                        <td>{{ dict["protein"] }}</td>
+                        <td>{{ dict["fat"] }}</td>
+                        <td>{{ dict["carbohydrate"] }}</td>
+                        <td>{{ dict["free_sugars"] }}</td>
+                        <td>{{ dict["salt"] }}</td>
+                        <td>{{ dict["fibre"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </section>  
+            {% endif %}
+    </section>
+    
+{% endblock %}

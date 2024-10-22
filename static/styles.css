@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #a0d9a0;
+}
+
+header {
+    background-color:rgb(19, 68, 19);
+    color: white;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header > h1 {
+    font-size: 30px;
+}
+
+
+.icon {
+    order: -1;
+    margin-right: 10px;
+}
+
+.icon > img {
+    width: 3em;
+}
+
+nav {
+    background-color: #04AA6D;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+nav a {
+    color: white;
+    font-size: 1.3em;
+    padding-block: 5px;
+    padding-inline: 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #0a8a55a9;
+    color: white;
+}
+
+nav div{
+    background-color: #106faa;
+    color: white;
+    float: right;
+    display: flex;
+    justify-content: end;
+}
+
+nav .status {
+    background-color: #0a288a;
+    color: white;
+}
+
+nav .status:hover {
+    background-color: #0a288a92;
+    color: white;
+}
+
+nav .start {
+    background-color: #0a3f8a;
+    color: white;
+}
+
+nav .start:hover {
+    background-color: #0a3f8a8f;
+    color: white;
+}
+
+nav .profile {
+    background-color: #115bab;
+    color: white;
+}
+
+nav .profile:hover {
+    background-color: #0f669d;
+    color: white;
+}
+
+nav .logout {
+    background-color: #8a0a0a;
+    color: white;
+}
+
+nav .logout:hover {
+    background-color: #b40505;
+    color: white;
+}
+
+/* Main */
+main{
+    background-color: #a0d9a0;
+    padding-inline: 1em;
+    padding-block: 0.5em;
+}
+
+main .block_base{
+    background-color: rgba(255, 255, 255, 0.396);
+    padding-inline: 1em;
+    padding-block: 5px;
+}
+
+main .block_overview{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    align-items:flex-start;
+    align-content:flex-start;
+    padding-inline: 1em;
+    padding-block: 1em;
+}
+
+main article.overview {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    text-align: center;
+}
+
+footer{
+    background-color:rgb(19, 68, 19);
+    color: white;
+}
+
+form {
+    padding: 1em;
+    border: solid 5px orange;
+    background-color:rgba(255, 255, 255, 0.561);
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+table img {
+    width: 120px;
+    height: 100px;
+}

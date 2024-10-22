@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        <h1>Nutrition of {{food_nutrition["food_name"]}}</h1>
+        <section class="block_detail">
+            <article>
+                <table>
+                    <tr>
+                        <th colspan="2">
+                            <img src="{{ url_for('static', filename=food_nutrition['url']) }}" alt="{{ dict['food_name'] }}">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Food Name</th>
+                        <td>{{ food_nutrition["food_name"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Food Type</th>
+                        <td>{{ food_nutrition["food_type"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Energy (kcal)</th>
+                        <td>{{ food_nutrition["energy"] }} kcal</td>
+                    </tr>
+                    <tr>
+                        <th>Protein (g)</th>
+                        <td>{{ food_nutrition["protein"] }} g</td>
+                    </tr>
+                    <tr>
+                        <th>Carbohydrate (g)</th>
+                        <td>{{ food_nutrition["carbohydrate"] }} g</td>
+                    </tr>
+                    <tr>
+                        <th>Dietary Fiber (g)</th>
+                        <td>{{ food_nutrition["dietaryFiber"] }} g</td>
+                    </tr>
+                    <tr>
+                        <th>Fat (g)</th>
+                        <td>{{ food_nutrition["fat"] }} g</td>
+                    </tr>
+                    <tr>
+                        <th>Vitamin A (IU)</th>
+                        <td>{{ food_nutrition["vitamin_a"] }} IU</td>
+                    </tr>
+                    <tr>
+                        <th>Vitamin B (mg)</th>
+                        <td>{{ food_nutrition["vitamin_b"] }} mg</td>
+                    </tr>
+                    <tr>
+                        <th>Vitamin C (mg)</th>
+                        <td>{{ food_nutrition["vitamin_c"] }} mg</td>
+                    </tr>
+                    <tr>
+                        <th>Vitamin D (IU)</th>
+                        <td>{{ food_nutrition["vitamin_d"] }} IU</td>
+                    </tr>
+                    <tr>
+                        <th>Trace Minerals (mg)</th>
+                        <td>{{ food_nutrition["trace_minerals"] }} mg</td>
+                    </tr>    
+                    <tr>
+                        <th>Gi</th>
+                        <td>{{ food_nutrition["gi"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gl</th>
+                        <td>{{ food_nutrition["gl"] }}</td>
+                    </tr>
+                    {% if not g.admin_id %}
+                    <tr>
+                        <th colspan="2">
+                            <a href="{{ url_for('add_to_draft', food_name=food_nutrition['food_name'])}}">
+                            Add to my draft
+                            </a>
+                        </th>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th colspan="2">
+                            <a href="{{ url_for('food_change', food_name=food_nutrition['food_name'])}}">
+                            Change detail
+                            </a>
+                        </th>
+                    </tr>
+                </table>
+            </article>
+        </section>
+    </section>
+
+{% endblock %}

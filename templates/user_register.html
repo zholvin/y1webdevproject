@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <form action="" method="POST" novalidate>
+        <div class="register">
+        <h2>Register</h2>
+        <h3>Basic Information</h3>
+        {{ form.hidden_tag() }}
+        {{ form.user_id.label }}
+        {{ form.user_id() }}
+        {% for error in form.user_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password2.label }}
+        {{ form.password2() }}
+        {% for error in form.password2.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        <br />
+        {{ form.hidden_tag() }}
+        {{ form.user_type.label }}
+        {{ form.user_type() }}
+        <br />
+        {{ form.admin_code.label }}
+        {{ form.admin_code() }}
+        {% for error in form.admin_code.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        <br />
+        <h3>Security question</h3>
+        <h4>What is your favorite band?</h4>
+        {{ form.secret.label }}
+        {{ form.secret() }}
+        {% for error in form.secret.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        <br />
+        {{ form.submit() }}
+        </div>
+    </form>
+    
+{% endblock %}

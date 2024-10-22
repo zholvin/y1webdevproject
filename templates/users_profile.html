@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+
+    <section class="block_base">
+        <h1>Users Profile</h1>
+        <section class="block_detail">
+            <article>
+                <table>
+                    <tr>
+                        <th>user_id</th>
+                        <th>name</th>
+                        <th>gender</th>
+                        <th>age</th>
+                        <th>height</th>
+                        <th>weight</th>
+                        <th>bmi</th>
+                        <th>bmi_category</th>
+                    </tr>
+                    {% for dict in users_profile %}
+                    <tr>
+                        <td>{{ dict["user_id"] }}</td>
+                        <td>{{ dict["name"] }}</td>
+                        <td>{{ dict["gender"] }}</td>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["height"] }}</td>
+                        <td>{{ dict["weight"] }}</td>
+                        <td>{{ dict["bmi"] }}</td>
+                        <td>{{ dict["bmi_category"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+        </section>
+    </section>
+
+
+    
+{% endblock %}

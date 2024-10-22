@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <form action="" method="POST" novalidate>
+        <h2>New foods request</h2>
+        {{ form.hidden_tag() }}
+        {{ form.food_name.label }}
+        {{ form.food_name() }}
+        {% for error in form.food_name.errors %}
+            {{ error }}
+        {% endfor %}        
+        <br />
+        {{ form.food_type.label }}
+        {{ form.food_type() }}
+        <br />
+        {{ form.guest_description.label }}
+        {{ form.guest_description() }}
+        {% for error in form.guest_description.errors %}
+            {{ error }}
+        {% endfor %}     
+        {{ form.submit() }}
+    </form>
+
+    <form>
+        <table>
+        <tr>
+            <th>Food name</th>
+            <th>Food type</th>
+            <th>Insert date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Delete</th>
+        </tr>
+        {% for dict in foods_not %}
+        <tr>
+            <th>{{ dict["food_name"] }}</th>
+            <td>{{ dict["food_type"] }}</td>
+            <td>{{ dict["insert_date"] }}</td>
+            <td>{{ dict["guest_description"] }}</td>
+            <td>{{ dict["status"] }}</td>
+            <td>
+                <a href="{{ url_for('food_not_list_delete', order_id=dict['order_id'])}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}        
+        </table>
+    </form>
+
+{% endblock %}

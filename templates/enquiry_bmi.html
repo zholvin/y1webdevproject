@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    
+
+<section class="block_base">
+    <h1>Enquiry BMI</h1>
+    <section class="block_detail">
+        <article>
+            <h3>BMI Table</h3>
+            <table>
+                <caption>BMI Category</caption>    
+                <tr>
+                    <th rowspan=2 scope="scope">Category</th>
+                    <th colspan=2 scope="scope">BMI (range)</th>
+                    <th colspan=2 scope="scope">BMI Prime</th>
+                </tr>
+                <tr>
+                    <th>min</th>
+                    <th>max</th>
+                    <th>min</th>
+                    <th>max</th>
+                </tr>
+                {% for dict in bmi %}
+                <tr>
+                    <th>{{ dict["category"] }}</th>
+                    <td>{{ dict["min_bmi"] }}</td>
+                    <td>{{ dict["max_bmi"] }}</td>
+                    <td>{{ dict["min_bmi_prime"] }}</td>
+                    <td>{{ dict["max_bmi_prime"] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </article>
+        <article>
+            <h3>Enquiry BMI of yours</h3>
+            <form method="POST" action="" novalidate> 
+                {{ form.hidden_tag() }}
+                <table>
+                    <caption>Enquiry Table</caption>
+                    <tr>
+                        <th>{{ form.height.label }}</th>
+                        <td>{{ form.height() }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.weight.label }}</th>
+                        <td>{{ form.weight() }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.bmi.label }}</th>
+                        <td>{{ form.bmi(disabled=True) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.result.label }}</th>
+                        <td>{{ form.result(disabled=True) }}</td>
+                    </tr>
+                </table>
+                <p>
+                    {{ form.submit() }}
+                    {{ form.save() }}
+                </p>
+        
+                {% for error in form.height.errors %}
+                    <p>Height error: {{ error }}</p>
+                {% endfor %}
+                {% for error in form.weight.errors %}
+                    <p>Weight error: {{ error }}</p>
+                {% endfor %}        
+            </form>
+        </article>
+    </section>
+</section>
+
+{% endblock %}

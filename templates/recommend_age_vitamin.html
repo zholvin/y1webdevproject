@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        {% if age_recommend_male and age_recommend_female%}
+        <h1>Vitamin recommendation sorted by Age</h1>
+        <section class="block_details=">
+            <article>
+                <form action="" method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ form.gender.label }}
+                    {{ form.gender() }}
+                    {{ form.age.label }}
+                    {{ form.age() }}
+                    {{ form.submit() }}
+                    {{ form.save() }}
+                        {% for error in form.age.errors %}
+                            {{ error }}
+                        {% endfor %}
+                </form>
+                <h2>Male's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Vitamin_a</th>
+                        <th>Thiamin</th>
+                        <th>Riboflavin</th>
+                        <th>Niacin Equivalent</th>
+                        <th>Vitamin B6</th>
+                        <th>Vitamin B12</th>
+                        <th>Folate</th>
+                        <th>Vitamin C</th>
+                        <th>Vitamin D</th>
+                    </tr>
+                    {% for dict in age_recommend_male %}
+                    <tr>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["vitamin_a"] }}</td>
+                        <td>{{ dict["thiamin"] }}</td>
+                        <td>{{ dict["riboflavin"] }}</td>
+                        <td>{{ dict["niacin_equivalent"] }}</td>
+                        <td>{{ dict["vitamin_b6"] }}</td>
+                        <td>{{ dict["vitamin_b12"] }}</td>
+                        <td>{{ dict["folate"] }}</td>
+                        <td>{{ dict["vitamin_c"] }}</td>
+                        <td>{{ dict["vitamin_d"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+            <article>
+                <h2>Female's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Vitamin_a</th>
+                        <th>Thiamin</th>
+                        <th>Riboflavin</th>
+                        <th>Niacin Equivalent</th>
+                        <th>Vitamin B6</th>
+                        <th>Vitamin B12</th>
+                        <th>Folate</th>
+                        <th>Vitamin C</th>
+                        <th>Vitamin D</th>
+                    </tr>
+                    {% for dict in age_recommend_female %}
+                    <tr>
+                        <td>{{ dict["age"] }}</td>
+                        <td>{{ dict["vitamin_a"] }}</td>
+                        <td>{{ dict["thiamin"] }}</td>
+                        <td>{{ dict["riboflavin"] }}</td>
+                        <td>{{ dict["niacin_equivalent"] }}</td>
+                        <td>{{ dict["vitamin_b6"] }}</td>
+                        <td>{{ dict["vitamin_b12"] }}</td>
+                        <td>{{ dict["folate"] }}</td>
+                        <td>{{ dict["vitamin_c"] }}</td>
+                        <td>{{ dict["vitamin_d"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+        </section>
+
+
+
+
+        {% elif age_recommend_male %}
+        <h1>Vitamin recommendation sorted by Age</h1>
+        <section class="block_details=">
+            <article>
+            <form action="" method="POST" novalidate>
+                {{ form.hidden_tag() }}
+                {{ form.gender.label }}
+                {{ form.gender() }}
+                {{ form.age.label }}
+                {{ form.age() }}
+                {{ form.submit() }}
+                {{ form.save() }}
+                    {% for error in form.age.errors %}
+                        {{ error }}
+                    {% endfor %}
+            </form>
+            <br />
+            <h2>Male's</h2>
+            <table>
+                <tr>
+                    <th>Age</th>
+                    <th>Vitamin_a</th>
+                    <th>Thiamin</th>
+                    <th>Riboflavin</th>
+                    <th>Niacin Equivalent</th>
+                    <th>Vitamin B6</th>
+                    <th>Vitamin B12</th>
+                    <th>Folate</th>
+                    <th>Vitamin C</th>
+                    <th>Vitamin D</th>
+                </tr>
+                {% for dict in age_recommend_male %}
+                <tr>
+                    <td>{{ dict["age"] }}</td>
+                    <td>{{ dict["vitamin_a"] }}</td>
+                    <td>{{ dict["thiamin"] }}</td>
+                    <td>{{ dict["riboflavin"] }}</td>
+                    <td>{{ dict["niacin_equivalent"] }}</td>
+                    <td>{{ dict["vitamin_b6"] }}</td>
+                    <td>{{ dict["vitamin_b12"] }}</td>
+                    <td>{{ dict["folate"] }}</td>
+                    <td>{{ dict["vitamin_c"] }}</td>
+                    <td>{{ dict["vitamin_d"] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+        
+        {% elif age_recommend_female %}
+        <h1>Vitamin recommendation sorted by Age</h1>
+        <section class="block_base">
+            <article>
+                <form action="" method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ form.gender.label }}
+                    {{ form.gender() }}
+                    {{ form.age.label }}
+                    {{ form.age() }}
+                    {{ form.submit() }}
+                    {{ form.save() }}
+                    {% for error in form.age.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </form>
+                <br />
+                <h2>Female's</h2>
+                <table>
+                    <tr>
+                        <th>Age</th>
+                        <th>Vitamin_a</th>
+                        <th>Thiamin</th>
+                        <th>Riboflavin</th>
+                        <th>Niacin Equivalent</th>
+                        <th>Vitamin B6</th>
+                        <th>Vitamin B12</th>
+                        <th>Folate</th>
+                        <th>Vitamin C</th>
+                        <th>Vitamin D</th>
+                </tr>
+                {% for dict in age_recommend_female %}
+                <tr>
+                    <td>{{ dict["age"] }}</td>
+                    <td>{{ dict["vitamin_a"] }}</td>
+                    <td>{{ dict["thiamin"] }}</td>
+                    <td>{{ dict["riboflavin"] }}</td>
+                    <td>{{ dict["niacin_equivalent"] }}</td>
+                    <td>{{ dict["vitamin_b6"] }}</td>
+                    <td>{{ dict["vitamin_b12"] }}</td>
+                    <td>{{ dict["folate"] }}</td>
+                    <td>{{ dict["vitamin_c"] }}</td>
+                    <td>{{ dict["vitamin_d"] }}</td>
+                </tr>
+                {% endfor %}
+                </table>
+            </article>
+        </section>
+        {% endif %}
+    </section>
+    
+    {% endblock %}

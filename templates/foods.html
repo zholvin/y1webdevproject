@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    
+
+    <section class="block_base">
+        <h1>Foods</h1>
+        <section class="block_detail">
+            {% if view_type=="Overview" %}
+                <article>
+                    <form method="POST" action="" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.view_type.label }}
+                        {{ form.view_type() }}
+                        {{ form.exchange() }}
+                        {{ form.food_type.label }}
+                        {{ form.food_type() }}
+                        {{ form.food_name.label }}
+                        {{ form.food_name() }}
+                        {{ form.submit() }}
+                        {% if not g.admin_id %}
+                        <p>
+                            <a href="{{ url_for('food_not_list') }}">New foods request</a>
+                        </p>
+                        {% endif %}
+                    </form>
+                    <br />
+                    <table>
+                        <tr>
+                            <th>Food image</th>
+                            <th>Food name</th>
+                            <th>Food type</th>
+                            <th>Details</th>
+                            {% if not g.admin_id %}
+                            <th>Draft</th>
+                            {% endif %}
+                        </tr>
+                        {% for dict in foods %}
+                        <tr>
+                            <td><img src="{{ url_for('static', filename=dict['url']) }}" alt="{{ dict['food_name'] }}"></td>
+                            <td>{{ dict["food_name"] }}</td>
+                            <td>{{ dict["food_type"] }}</td>
+                            <td><a href="{{ url_for('food_nutrition', food_name=dict['food_name'])}}">View</a> </td>
+                            {% if not g.admin_id %}
+                            <td><a href="{{ url_for('add_to_draft', food_name=dict['food_name'])}}">Add</a></td>
+                            {% endif %} 
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </article>
+            {% endif %}
+            {% if view_type == "Detail" %}
+                <article>
+                    <form method="POST" action="" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.view_type.label }}
+                        {{ form.view_type() }}
+                        {{ form.exchange() }}
+                        {{ form.food_type.label }}
+                        {{ form.food_type() }}
+                        {{ form.food_name.label }}
+                        {{ form.food_name() }}
+                        {{ form.submit() }}
+                        <br />
+                        <br />
+                        <table>
+                            <tr>
+                                <th>Food Name</th>
+                                <th>Food Type</th>
+                                <th>Energy (kcal)</th>
+                                <th>Protein (g)</th>
+                                <th>Carbohydrate (g)</th>
+                                <th>Dietary Fiber (g)</th>
+                                <th>Fat (g)</th>
+                                <th>Vitamin A (IU)</th>
+                                <th>Vitamin B (mg)</th>
+                                <th>Vitamin C (mg)</th>
+                                <th>Vitamin D (IU)</th>
+                                <th>Trace Minerals (mg)</th>
+                                <th>GI</th>
+                                <th>GL</th>
+                                {% if not g.admin_id %}
+                                <th>Draft</th>
+                                {% endif %}
+                            </tr>
+                            {% for dict in foods %}
+                            <tr>
+                                <th>{{ dict["food_name"] }}</th>
+                                <td>{{ dict["food_type"] }}</td>
+                                <td>{{ dict["energy"] }} kcal</td>
+                                <td>{{ dict["protein"] }} g</td>
+                                <td>{{ dict["carbohydrate"] }} g</td>
+                                <td>{{ dict["dietaryFiber"] }} g</td>
+                                <td>{{ dict["fat"] }} g</td>
+                                <td>{{ dict["vitamin_a"] }} IU</td>
+                                <td>{{ dict["vitamin_b"] }} mg</td>
+                                <td>{{ dict["vitamin_c"] }} mg</td>
+                                <td>{{ dict["vitamin_d"] }} IU</td>
+                                <td>{{ dict["trace_minerals"] }} mg</td>
+                                <td>{{ dict["gi"] }}</td>
+                                <td>{{ dict["gl"] }}</td>
+                                {% if not g.admin_id %}
+                                <td><a href="{{ url_for('add_to_draft', food_name=dict['food_name']) }}">Add</a></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}        
+                        </table>
+                    </form>
+                </article>
+            {% endif %}
+        </section>
+    </section>
+
+
+ 
+
+{% endblock %}

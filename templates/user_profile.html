@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+
+    <section class="block_base">
+        <h1>User Profile</h1>
+        <section class="block_detail">
+            <article>
+                <form method="POST" action="" novalidate>
+                    {{ form.hidden_tag() }}
+                    <table>
+                        <caption>Basis Information</caption>
+                        <tr>
+                            <th>User id: </th>
+                            <td>{{ form.user_id(readonly=true) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name: </th>
+                            <td>{{ form.name() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gender: </th>
+                            <td>{{ form.gender() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Age:</th>
+                            <td>{{ form.age() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Height: </th>
+                            <td>{{ form.height() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Weight: </th>
+                            <td>{{ form.weight() }}</td>
+                        </tr>
+                        <tr>
+                            <th>BMI: </th>
+                            <td>{{ form.bmi(disabled=True) }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ form.bmi_category.label }}</th>
+                            <td>{{ form.bmi_category(disabled=True) }}</td>
+                        </tr>
+                        <tr>
+                           <th colspan="2">{{ form.submit() }}</th> 
+                        </tr>
+                    </table>
+            
+                    {% for error in form.name.errors %}
+                    <p>Name error: {{ error }}</p>  
+                    {% endfor %}
+                    {% for error in form.weight.errors %}
+                    <p>Error: Weight {{ error }}</p>  
+                    {% endfor %}
+                    {% for error in form.height.errors %}
+                    <p>Error: Height {{ error }}</p>  
+                    {% endfor %}
+                    {% for error in form.age.errors %}
+                    <p>Age error: {{ error }}</p>  
+                    {% endfor %}
+                </form>
+            </article>
+            <article>
+                {% if dict_general %}
+                <table>
+                    <caption>Your nutrition recommendation</caption>
+                    <tr>
+                        <th colspan="2">General</th>
+                        <th colspan="2">Vitamins</th>
+                    </tr>
+                    {% for k, y in dict_general|zip(dict_vitamin) %}
+                    <tr>
+                        <th>{{ form.energy_MJ.label }}</th>
+                        <td>{{ k["energy_MJ"] }}</td>
+                        <th>Vitamin A</th>
+                        <td>{{ y["vitamin_a"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.energy_kcal.label }}</th>
+                        <td>{{ k["energy_kcal"] }}</td>
+                        <th>Thiamin</th>
+                        <td>{{ y["thiamin"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.protein.label }}</th>
+                        <td>{{k["protein"]}}</td>
+                        <th>Riboflavin</th>
+                        <td>{{ y["riboflavin"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fat</th>
+                        <td>{{ k["fat"] }}</td>
+                        <th>Niacin Equivalent</th>
+                        <td>{{ y["niacin_equivalent"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.carbohydrate.label }}</th>
+                        <td>{{ k["carbohydrate"] }}</td>
+                        <th>Vitamin B6</th>
+                        <td>{{ y["vitamin_b6"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.free_sugars.label }}</th>
+                        <td>{{ k["free_sugars"] }}</td>
+                        <th>Vitamin B12</th>
+                        <td>{{ y["vitamin_b12"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.salt.label }}</th>
+                        <td>{{ k["salt"] }}</td>
+                        <th>Folate</th>
+                        <td>{{ y["folate"] }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form.fibre.label }}</th>
+                        <td>{{ k["fibre"] }}</td>
+                        <th>Vitamin C</th>
+                        <td>{{ y["vitamin_c"] }}</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <th>Vitamin D</th>
+                        <td>{{ y["vitamin_d"] }}</td>
+                    </tr>
+                    {% endfor%}
+                </table>
+                {% endif %}
+            </article>
+        </section>
+    </section>
+
+
+    
+{% endblock %}

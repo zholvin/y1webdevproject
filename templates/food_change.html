@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        <h1>Nutrition of {{food_nutrition["food_name"]}}</h1>
+        <section class="block_detail">
+            <article>
+                <form action="" method="Post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <table>
+                        <tr>
+                            <th colspan="2">
+                                <img src="{{ url_for('static', filename=food_nutrition['url']) }}" alt="{{ dict['food_name'] }}">
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Food Name</th>
+                            <td>{{ food_nutrition["food_name"] }}</td>
+                            <td>{{ form.food_name() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Food Type</th>
+                            <td>{{ food_nutrition["food_type"] }}</td>
+                            <td>{{ form.food_type() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Energy (kcal)</th>
+                            <td>{{ food_nutrition["energy"] }} kcal</td>
+                            <td>{{ form.energy() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Protein (g)</th>
+                            <td>{{ food_nutrition["protein"] }} g</td>
+                            <td>{{ form.protein() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Carbohydrate (g)</th>
+                            <td>{{ food_nutrition["carbohydrate"] }} g</td>
+                            <td>{{ form.carbohydrate() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Dietary Fiber (g)</th>
+                            <td>{{ food_nutrition["dietaryFiber"] }} g</td>
+                            <td>{{ form.dietaryFiber() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fat (g)</th>
+                            <td>{{ food_nutrition["fat"] }} g</td>
+                            <td>{{ form.fat() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Vitamin A (IU)</th>
+                            <td>{{ food_nutrition["vitamin_a"] }} IU</td>
+                            <td>{{ form.vitamin_a() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Vitamin B (mg)</th>
+                            <td>{{ food_nutrition["vitamin_b"] }} mg</td>
+                            <td>{{ form.vitamin_b() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Vitamin C (mg)</th>
+                            <td>{{ food_nutrition["vitamin_c"] }} mg</td>
+                            <td>{{ form.vitamin_c() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Vitamin D (IU)</th>
+                            <td>{{ food_nutrition["vitamin_d"] }} IU</td>
+                            <td>{{ form.vitamin_d() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Trace Minerals (mg)</th>
+                            <td>{{ food_nutrition["trace_minerals"] }} mg</td>
+                            <td>{{ form.trace_minerals() }}</td>
+                        </tr>    
+                        <tr>
+                            <th>Gi</th>
+                            <td>{{ food_nutrition["gi"] }}</td>
+                            <td>{{ form.gi() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gl</th>
+                            <td>{{ food_nutrition["gl"] }}</td>
+                            <td>{{ form.gl() }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                {{ form.update() }}
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </article>
+        </section>
+    </section>
+
+{% endblock %}

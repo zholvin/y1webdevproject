@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <section class="block_base">
+        <h1>Enquiry</h1>
+        <section class="block_overview">
+            <article class="overview">
+                <h3>BMI</h3>
+                <p>
+                    Enquiry your <b>BMI</b>,
+                    <br>you can also save it
+                    <br>and to know
+                    <br>where <b>Category</b> you are in.
+                    <br />
+                    <br />
+                    <a href="{{ url_for('bmi') }}">Click here</a>
+                </p>
+            </article>
+            <article class="overview">
+                <h3>Nutrition Recommendation</h3>
+                <p>
+                    Let's know how much
+                    <br><b>nutrition</b> is needed
+                    <br>on different ages.
+                    <br />
+                    <br />
+                    <a href="{{ url_for('recommend_age_general') }}">Click here</a>
+                </p>
+            </article>
+            <article class="overview">
+                <h3>Vitamin Recommendation</h3>
+                <p>
+                    Let's know how much
+                    <br><b>vitamin</b> is needed
+                    <br>on different ages.
+                    <br />
+                    <br />
+                    <a href="{{ url_for('recommend_age_vitamin') }}">Click here</a>
+                </p>
+            </article>
+        </section>
+    </section>
+    
+{% endblock %}
